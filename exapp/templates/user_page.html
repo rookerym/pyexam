@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Quotes</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_pyexam.css' %}">
+</head>
+<body>
+    <a href="/success">Back to Dashboard</a><br>
+    <a href="/logout">Logout</a>
+    <h2>{{quoter.f_name}} {{quoter.l_name}}'s Quotes</h2>
+    <div>
+        {% for post in quoter.messages.all %}
+        <p>{{post.quote}}</p>
+        <p>_____________________________________________________________________________</p>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

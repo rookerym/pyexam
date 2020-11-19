@@ -1,0 +1,43 @@
+h1 {
+    display: inline-block;  
+}
+
+.el{
+    width: 300px;
+    margin-left: 435px;
+    list-style: inside;
+    background-color: indianred;
+    text-align: left;
+}
+
+.mess{
+    margin: auto;
+    width: 500px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+}
+
+#wrapper{
+    margin: auto;
+    width: 1200px;
+    text-align: center;
+}
+
+input {
+    display: block;
+    margin-left: 175px;
+    margin-bottom: 20px;
+}
+
+
+
+.lrbox {
+    margin: auto;
+    margin-left: 5px;
+    width: 500px;
+    border: 2px solid black;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+}

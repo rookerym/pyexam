@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_pyexam.css' %}">
+</head>
+<body>
+    <a href="/get_user/{{request.session.user_id}}">Edit My Account</a><br>
+    <a href="/logout">Logout</a>
+    <H1>Welcome to the Quote Dashboard, {{request.session.user_name}}</H1>
+    
+    <div id="create_quote">
+        {% if messages %}
+        <ul>
+            {% for error in messages %}
+            <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form action="/create_quote" method="post">
+            {% csrf_token %}
+            <input type="text" name="author" placeholder="Authors Name">
+            <textarea name="quote" cols="60" rows="6" placeholder="Type Quote here"></textarea>
+            <input type="submit" value="Post It!">
+        </form>
+
+        <div id="quotes">
+            <h4>Quotes:</h4>
+            {% for post in all_quotes %}
+                <p>Submitted by: <a href="/user/{{post.poster.id}}">{{post.poster.f_name}} {{post.poster.l_name}}</a></p>
+                    {% if post.poster.id == request.session.user_id %}
+                    <a href="/delete_quote/{{post.id}}">Delete This quote</a>
+                    {% endif %}
+            
+                <p>"{{post.quote}}" - {{post.author}}</p>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                            <input type="submit" value="like It!">
+                            <input type="hidden" name="like" value="{{message.id}}">
+                    </form>
+                <p>________________________________________________________________</p>
+            {% endfor %}
+        </div>
+            
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Account</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_pyexam.css' %}">
+</head>
+<body>
+    <a href="/success">Back to Dashboard</a><br>
+    <a href="/logout">Logout</a>
+    <h1>Update Your Account:</h1>
+        <div class="frm">
+            <form action="/edit_user/{{edit_user.id}}" method="GET">
+            <input type="text" name="f_name" value="{{edit_user.f_name}}">
+            <input type="text" name="l_name" value={{edit_user.l_name}}>
+            <input type="email" name="email" value="{{edit_user.email}}">
+            <input type="submit" value="Update">
+            </form>
+        </div>
+    </h1>
+    
+</body>
+</html>
